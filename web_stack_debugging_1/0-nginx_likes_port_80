@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Configure server so Nginx listens on port 80 on all IPv4 addresses
 
 apt-get update -y
 apt-get install -y nginx
 
-# Replace any 'listen <port>' lines with 'listen 80'
 sed -i 's/listen [0-9]* default_server;/listen 80 default_server;/g' /etc/nginx/sites-enabled/default
 sed -i 's/listen \[::\]:[0-9]* default_server;/listen [::]:80 default_server;/g' /etc/nginx/sites-enabled/default
 
 service nginx restart
 
+# Output number of listen directives on port 80 (IPv4 + IPv6)
+grep -c "listen 80" /etc/nginx/sites-enabled/default
