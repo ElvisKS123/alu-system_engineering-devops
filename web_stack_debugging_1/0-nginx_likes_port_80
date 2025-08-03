@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Configure server so Nginx listens on port 80 on all IPv4 addresses
 
 apt-get update -y
 apt-get install -y nginx
